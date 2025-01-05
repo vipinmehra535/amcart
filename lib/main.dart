@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
           useMaterial3: false),
       onGenerateRoute: (routeSettings) => genrateRoute(routeSettings),
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? Provider.of<UserProvider>(context).user.type == 'user'
+          ? Provider.of<UserProvider>(context).user.type == 'admin'
               ? const BottomBar()
               : const AdminScreen()
           : const AuthScreen(),
