@@ -26,7 +26,6 @@ class _PostsScreenState extends State<PostsScreen> {
   void fetchAllProducts() async {
     products = await adminServices.fetchAllProducts(
       context: context,
-     
     );
     setState(() {});
   }
@@ -44,6 +43,7 @@ class _PostsScreenState extends State<PostsScreen> {
 
   void navigateToAddProduct() {
     Navigator.pushNamed(context, '/add-product');
+    
   }
 
   @override
