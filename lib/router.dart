@@ -3,7 +3,9 @@ import 'package:amcart/features/admin/screens/add_product_screen.dart';
 import 'package:amcart/features/auth/screens/auth_screen.dart';
 import 'package:amcart/features/home/screens/categorey_deal_screen.dart';
 import 'package:amcart/features/home/screens/home_screen.dart';
+import 'package:amcart/features/search/screens/search_screen.dart';
 import 'package:flutter/material.dart';
+
 
 Route<dynamic> genrateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
@@ -29,6 +31,11 @@ Route<dynamic> genrateRoute(RouteSettings routeSettings) {
       );
 
     case AddProductScreen.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const AddProductScreen(),
+      );
+
+  case SearchScreen.routeName:
       return MaterialPageRoute(
         builder: (context) => const AddProductScreen(),
       );
