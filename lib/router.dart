@@ -6,7 +6,6 @@ import 'package:amcart/features/home/screens/home_screen.dart';
 import 'package:amcart/features/search/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
-
 Route<dynamic> genrateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
     case AuthScreen.routeName:
@@ -35,9 +34,12 @@ Route<dynamic> genrateRoute(RouteSettings routeSettings) {
         builder: (context) => const AddProductScreen(),
       );
 
-  case SearchScreen.routeName:
+    case SearchScreen.routeName:
+      var searchQuery = routeSettings.arguments as String;
       return MaterialPageRoute(
-        builder: (context) => const AddProductScreen(),
+        builder: (context) =>  SearchScreen(
+          searchQuery: searchQuery,
+        ),
       );
 
     default:
