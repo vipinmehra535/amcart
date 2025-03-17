@@ -9,6 +9,23 @@ import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
 class SearchServices {
+  /// Fetches the list of products based on the search query.
+  ///
+  /// [searchQuery] is the query string to search for.
+  ///
+  /// Returns a list of [Product] that match the search query.
+  ///
+  /// Calls [httpErrorHandle] to handle any errors that occur during the
+  /// request.
+  ///
+  /// If the request is successful, it adds each product to the [productList]
+  /// and returns it.
+  ///
+  /// If the request fails, it shows the error in a [SnackBar] using
+  /// [showSnackBar].
+  ///
+  /// Requires the [BuildContext] and the [UserProvider] to be available
+  /// in the widget tree.
   Future<List<Product>> fetchSearchProduct({
     required BuildContext context,
     required String searchQuery,
