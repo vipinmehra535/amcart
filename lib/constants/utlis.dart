@@ -2,14 +2,19 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+    GlobalKey<ScaffoldMessengerState>();
+
 void showSnackBar(BuildContext context, String text) {
-  if (!context.mounted) return;
-  ScaffoldMessenger.of(context).showSnackBar(
+  scaffoldMessengerKey.currentState?.showSnackBar(
     SnackBar(
       content: Text(text),
+      behavior: SnackBarBehavior.floating, // Optional: Floating style
+      duration: const Duration(seconds: 2), // Customize duration
     ),
   );
 }
+
 
 Future<List<File>> pickImages() async {
   List<File> images = [];

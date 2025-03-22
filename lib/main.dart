@@ -28,11 +28,15 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final AuthService authService = AuthService();
+  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+      GlobalKey<ScaffoldMessengerState>();
 
   @override
   void initState() {
     super.initState();
-    authService.getUserData(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      authService.getUserData(context);
+    });
   }
 
   // This widget is the root of your application.
@@ -40,6 +44,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AmCart',
+      
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           scaffoldBackgroundColor: GlobalVariables.backgroundColor,
