@@ -17,7 +17,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  List<Product> productList = [];
+  List<Product> ?productList ;
   final SearchServices searchServices = SearchServices();
 
   @override
@@ -34,7 +34,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return productList.isEmpty
+    return productList==null
         ? const Loader()
         : Scaffold(
             appBar: PreferredSize(
