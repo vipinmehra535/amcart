@@ -16,7 +16,7 @@ class SearchProduct extends StatelessWidget {
             children: [
               Image.network(
                 product.images[0],
-                fit: BoxFit.scaleDown,
+                fit: BoxFit.fitWidth,
                 height: 135,
                 width: 135,
               ),
@@ -40,7 +40,7 @@ class SearchProduct extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 10, top: 5),
                     child: const Stars(rating: 4),
                   ),
-                Container(
+                  Container(
                     width: 235,
                     padding: const EdgeInsets.only(left: 10, top: 5),
                     child: Text(
