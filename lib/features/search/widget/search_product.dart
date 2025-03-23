@@ -21,7 +21,6 @@ class SearchProduct extends StatelessWidget {
                 width: 135,
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     width: 235,
@@ -36,13 +35,20 @@ class SearchProduct extends StatelessWidget {
                       maxLines: 2,
                     ),
                   ),
-                  const Satrs(rating: 4),
                   Container(
                     width: 235,
                     padding: const EdgeInsets.only(left: 10, top: 5),
+                    child: const Stars(rating: 4),
+                  ),
+                Container(
+                    width: 235,
+                    padding: const EdgeInsets.only(left: 10, top: 5),
                     child: Text(
-                      "\$${product.price}",
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      '\$${product.price}',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                       maxLines: 2,
                     ),
                   ),
@@ -51,7 +57,10 @@ class SearchProduct extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 10),
                     child: Text(
                       "${product.quantity.toInt()} left in stock",
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.teal,
+                      ),
                       maxLines: 2,
                     ),
                   ),
