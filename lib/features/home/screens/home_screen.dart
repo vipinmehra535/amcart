@@ -15,9 +15,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final TextEditingController searchController = TextEditingController();
   void navigateToSearchScreen(String queryString) {
     Navigator.pushNamed(context, SearchScreen.routeName,
         arguments: queryString);
+    searchController.clear();
   }
 
   @override
@@ -42,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
+                      controller: searchController,
                       onFieldSubmitted: navigateToSearchScreen,
                       decoration: InputDecoration(
                         prefixIcon: InkWell(
