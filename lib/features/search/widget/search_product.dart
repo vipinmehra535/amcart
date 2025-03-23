@@ -7,18 +7,40 @@ class SearchProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         Container(
-          margin: const  EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
-            children: [
-            Image.network(product.images[0],fit: BoxFit.fitHeight,height: 135,width: 135,),
-
-            ]
-          ),
+          margin: const EdgeInsets.symmetric(horizontal: 10),
+          child: Row(children: [
+            Image.network(
+              product.images[0],
+              fit: BoxFit.fitHeight,
+              height: 135,
+              width: 135,
+            ),
+            Column(
+              children: [
+                Container(
+                  width: 235,
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    product.name,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 16.0,
+                        color: Colors.black),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    "\$${product.price}",
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            )
+          ]),
         )
-
       ],
     );
   }
