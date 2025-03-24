@@ -44,7 +44,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AmCart',
-      
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           scaffoldBackgroundColor: GlobalVariables.backgroundColor,
