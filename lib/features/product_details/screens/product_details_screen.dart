@@ -1,15 +1,18 @@
 import 'package:amcart/constants/global_variables.dart';
 import 'package:amcart/features/search/screens/search_screen.dart';
+import 'package:amcart/models/product.dart';
 import 'package:flutter/material.dart';
 
-class ProductDetails extends StatefulWidget {
-  const ProductDetails({super.key});
+class ProductDetailsScreen extends StatefulWidget {
+  static const String routeName = '/product-details';
+  final Product product;
+  const ProductDetailsScreen({super.key, required this.product});
 
   @override
-  State<ProductDetails> createState() => _ProductDetailsState();
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
 }
 
-class _ProductDetailsState extends State<ProductDetails> {
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final TextEditingController searchController = TextEditingController();
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
