@@ -1,3 +1,4 @@
+import 'package:amcart/common/widgets/stars.dart';
 import 'package:amcart/constants/global_variables.dart';
 import 'package:amcart/features/search/screens/search_screen.dart';
 import 'package:amcart/models/product.dart';
@@ -93,7 +94,32 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           ),
         ),
       ),
-      body: Center(child: Text('Product details')),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  widget.product.id!,
+                ),
+                const Stars(rating: 4.0),
+              ],
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.topLeft,
+              child: Text(
+                widget.product.name,
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
