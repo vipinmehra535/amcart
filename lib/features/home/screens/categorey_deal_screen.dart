@@ -1,6 +1,7 @@
 import 'package:amcart/common/widgets/loader.dart';
 import 'package:amcart/constants/global_variables.dart';
 import 'package:amcart/features/home/services/home_services.dart';
+import 'package:amcart/features/product_details/screens/product_details_screen.dart';
 import 'package:amcart/models/product.dart';
 import 'package:flutter/material.dart';
 
@@ -82,11 +83,11 @@ class _CategoreyDealScreenState extends State<CategoreyDealScreen> {
                       final product = productList![index];
                       return GestureDetector(
                         onTap: () {
-                          // Navigator.pushNamed(
-                          //   context,
-                          //   ProductDetailScreen.routeName,
-                          //   arguments: product,
-                          // );
+                          Navigator.pushNamed(
+                            context,
+                            ProductDetailsScreen.routeName,
+                            arguments: product,
+                          );
                         },
                         child: Column(
                           children: [
