@@ -1,3 +1,4 @@
+import 'package:amcart/common/widgets/custom_button.dart';
 import 'package:amcart/common/widgets/stars.dart';
 import 'package:amcart/constants/global_variables.dart';
 import 'package:amcart/features/search/screens/search_screen.dart';
@@ -62,19 +63,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         fillColor: Colors.white,
                         contentPadding: const EdgeInsets.only(top: 10),
                         border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(7),
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(7)),
                           borderSide: BorderSide.none,
                         ),
                         enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(7),
-                          ),
-                          borderSide: BorderSide(
-                            color: Colors.black38,
-                            width: 1,
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(7)),
+                          borderSide:
+                              BorderSide(color: Colors.black38, width: 1),
                         ),
                         hintText: 'Search amCart.in',
                         hintStyle: const TextStyle(
@@ -96,104 +91,130 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    widget.product.id!,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          widget.product.id!,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        const Stars(rating: 4.0),
+                      ],
                     ),
                   ),
-                  const Stars(rating: 4.0),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      widget.product.category,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ),
+                  CarouselSlider(
+                    items: widget.product.images.map(
+                      (i) {
+                        return Builder(
+                          builder: (BuildContext context) => ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.network(
+                              i,
+                              fit: BoxFit.scaleDown,
+                              height: 200,
+                            ),
+                          ),
+                        );
+                      },
+                    ).toList(),
+                    options: CarouselOptions(
+                      viewportFraction: 1,
+                      height: 300,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 4),
+                      autoPlayAnimationDuration: const Duration(seconds: 1),
+                      autoPlayCurve: Curves.easeOutBack,
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      widget.product.name,
+                      style: const TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      '\$${widget.product.price}',
+                      style: const TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      widget.product.description,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              alignment: Alignment.topLeft,
-              child: Text(
-                widget.product.category,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                top: BorderSide(color: Colors.black12, width: 1),
+              ),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: CustomButton(text: 'Buy Now', onTap: () {}),
                 ),
-              ),
-            ),
-            CarouselSlider(
-              items: widget.product.images.map(
-                (i) {
-                  return Builder(
-                    builder: (BuildContext context) => ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.network(
-                        i,
-                        fit: BoxFit.cover,
-                        height: 200,
-                      ),
-                    ),
-                  );
-                },
-              ).toList(),
-              options: CarouselOptions(
-                viewportFraction: 1,
-                height: 300,
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 4),
-                autoPlayAnimationDuration: const Duration(seconds: 1),
-                autoPlayCurve: Curves.easeOutBack,
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
-              alignment: Alignment.topLeft,
-              child: Text(
-                widget.product.name,
-                style: const TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                const SizedBox(width: 10),
+                Expanded(
+                  child: CustomButton(
+                    text: 'Add to Cart',
+                    onTap: () {},
+                    color: const Color.fromARGB(255, 70, 145, 160),
+                  ),
                 ),
-              ),
+              ],
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
-              alignment: Alignment.topLeft,
-              child: Text(
-                '\$${widget.product.price}',
-                style: const TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              alignment: Alignment.topLeft,
-              child: Text(
-                widget.product.description,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.black54,
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
