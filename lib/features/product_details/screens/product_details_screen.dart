@@ -2,6 +2,7 @@ import 'package:amcart/common/widgets/stars.dart';
 import 'package:amcart/constants/global_variables.dart';
 import 'package:amcart/features/search/screens/search_screen.dart';
 import 'package:amcart/models/product.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -15,6 +16,7 @@ class ProductDetailsScreen extends StatefulWidget {
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final TextEditingController searchController = TextEditingController();
+
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
     searchController.clear();
@@ -96,27 +98,100 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  widget.product.id!,
-                ),
-                const Stars(rating: 4.0),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    widget.product.id!,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const Stars(rating: 4.0),
+                ],
+              ),
             ),
             Container(
               padding: const EdgeInsets.all(10),
               alignment: Alignment.topLeft,
               child: Text(
-                widget.product.name,
+                widget.product.category,
                 style: const TextStyle(
-                  fontSize: 22,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
+                  color: Colors.black87,
                 ),
               ),
-            )
+            ),
+            CarouselSlider(
+              items: widget.product.images.map(
+                (i) {
+                  return Builder(
+                    builder: (BuildContext context) => ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.network(
+                        i,
+                        fit: BoxFit.cover,
+                        height: 200,
+                      ),
+                    ),
+                  );
+                },
+              ).toList(),
+              options: CarouselOptions(
+                viewportFraction: 1,
+                height: 300,
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 4),
+                autoPlayAnimationDuration: const Duration(seconds: 1),
+                autoPlayCurve: Curves.easeOutBack,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+              ),
+              alignment: Alignment.topLeft,
+              child: Text(
+                widget.product.name,
+                style: const TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+              ),
+              alignment: Alignment.topLeft,
+              child: Text(
+                '\$${widget.product.price}',
+                style: const TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green,
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.topLeft,
+              child: Text(
+                widget.product.description,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
+              ),
+            ),
           ],
         ),
       ),
