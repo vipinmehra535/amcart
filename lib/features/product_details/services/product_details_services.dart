@@ -25,7 +25,7 @@ class ProductDetailsServices {
     final user = Provider.of<UserProvider>(context, listen: false);
     try {
       http.Response res = await http.post(
-        Uri.parse("$uri/admin/rating"),
+        Uri.parse("$uri/admin/rate-product"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': user.user.token,

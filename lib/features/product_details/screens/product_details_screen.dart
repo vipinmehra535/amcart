@@ -1,6 +1,8 @@
 import 'package:amcart/common/widgets/custom_button.dart';
 import 'package:amcart/common/widgets/stars.dart';
 import 'package:amcart/constants/global_variables.dart';
+import 'package:amcart/constants/utlis.dart';
+import 'package:amcart/features/product_details/services/product_details_services.dart';
 import 'package:amcart/features/search/screens/search_screen.dart';
 import 'package:amcart/models/product.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -18,6 +20,8 @@ class ProductDetailsScreen extends StatefulWidget {
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final TextEditingController searchController = TextEditingController();
+  final ProductDetailsServices productDetailsServices =
+      ProductDetailsServices();
 
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
@@ -219,7 +223,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         const Icon(Icons.star, color: Colors.amber),
                     itemCount: 5,
                     onRatingUpdate: (rating) {
-                      // Handle rating update
+                      productDetailsServices.rateProduct(
+                        context: context,
+                        product: widget.product,
+                        rating: rating,
+                        onSuccess: () {
+                          showSnackBar(context, 'Thanks for your feedback!');
+                        },
+                      );
                     },
                     unratedColor: Colors.black12,
                   )
