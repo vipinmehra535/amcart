@@ -1,7 +1,6 @@
 import 'package:amcart/common/widgets/custom_button.dart';
 import 'package:amcart/common/widgets/stars.dart';
 import 'package:amcart/constants/global_variables.dart';
-import 'package:amcart/constants/utlis.dart';
 import 'package:amcart/features/product_details/services/product_details_services.dart';
 import 'package:amcart/features/search/screens/search_screen.dart';
 import 'package:amcart/models/product.dart';
@@ -227,9 +226,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         context: context,
                         product: widget.product,
                         rating: rating,
-                        onSuccess: () {
-                          showSnackBar(context, 'Thanks for your feedback!');
-                        },
                       );
                     },
                     unratedColor: Colors.black12,

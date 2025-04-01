@@ -28,22 +28,25 @@ productRouter.get("/api/products/search/:name", auth, async (req, res) => {
 });
 
 productRouter.post("/api/rate-product", auth, async (req, res) => {
+  console.log("Rate product route hit");
+  console.log(req.body);
   const { id, rating } = req.body;
   try {
     // Find the product by its ID and update its rating
     const product = await Product.findById(id);
     // If the product is not found, return an error
+    const userId = req.user._id;
     if (!product) {
       return res.status(404).json({ error: "Product not found" });
     }
     for (let i = 0; i < product.rating.length; i++) {
-      if (product.rating[i].userId === req.user._id) {
+      if (product.rating[i].userId === req.user) {
         product.rating[i].rating = rating;
         await product.save();
         return res.json(product);
       }
     }
-    product.rating.push({ userId: req.user._id, rating });
+    product.rating.push({ userId: req.user, rating });
     await product.save();
     res.json(product);
   } catch (e) {
