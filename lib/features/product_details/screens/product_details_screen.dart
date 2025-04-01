@@ -206,6 +206,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ),
                   ),
                   RatingBar.builder(
+                    initialRating: 0,
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemSize: 30,
                     itemBuilder: (itemContext, index) =>
                         const Icon(Icons.star, color: Colors.amber),
                     itemCount: 5,
