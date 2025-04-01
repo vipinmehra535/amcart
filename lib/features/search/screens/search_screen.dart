@@ -22,6 +22,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   List<Product>? productList;
   final SearchServices searchServices = SearchServices();
+  final TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
@@ -33,6 +34,11 @@ class _SearchScreenState extends State<SearchScreen> {
     productList = await SearchServices()
         .fetchSearchProduct(context: context, searchQuery: widget.searchQuery);
     setState(() {});
+  }
+
+  void navigateToSearchScreen(String query) {
+    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+    searchController.clear();
   }
 
   @override
@@ -57,7 +63,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
-                      // onFieldSubmitted: navigateToSearchScreen,
+                      controller: searchController,
+                      onFieldSubmitted: navigateToSearchScreen,
                       decoration: InputDecoration(
                         prefixIcon: InkWell(
                           onTap: () {},
