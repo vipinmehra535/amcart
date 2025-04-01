@@ -12,6 +12,13 @@ class UserProvider extends ChangeNotifier {
     token: '',
   );
 
+  /// The current user.
+  ///
+  /// This is a getter that returns the [_user] object. This is a private
+  /// variable that is only accessible through this getter.
+  ///
+  /// This getter is used by the various widgets in the app to access the
+  /// current user.
   User get user => _user;
 
   void setUser(String user) {
