@@ -1,6 +1,7 @@
 import 'package:amcart/common/widgets/loader.dart';
 import 'package:amcart/constants/global_variables.dart';
 import 'package:amcart/features/home/widgets/address_box.dart';
+import 'package:amcart/features/product_details/screens/product_details_screen.dart';
 import 'package:amcart/features/search/services/search_services.dart';
 import 'package:amcart/features/search/widget/search_product.dart';
 import 'package:amcart/models/product.dart';
@@ -116,7 +117,16 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: ListView.builder(
                     itemCount: productList!.length,
                     itemBuilder: (context, index) {
-                      return SearchProduct(product: productList![index]);
+                      return GestureDetector(
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          ProductDetailsScreen.routeName,
+                          arguments: productList![index],
+                        ),
+                        child: SearchProduct(
+                          product: productList![index],
+                        ),
+                      );
                     },
                   ),
                 ),
