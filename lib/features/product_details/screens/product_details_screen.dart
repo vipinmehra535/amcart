@@ -198,11 +198,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                     ),
                   ),
-                  const Text(
-                    'Rate this product',
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: Colors.black54,
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.topLeft,
+                    child: const Text(
+                      'Rate this product',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black54,
+                      ),
                     ),
                   ),
                   RatingBar.builder(
@@ -210,7 +214,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     minRating: 1,
                     direction: Axis.horizontal,
                     allowHalfRating: true,
-                    itemSize: 30,
+                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                     itemBuilder: (itemContext, index) =>
                         const Icon(Icons.star, color: Colors.amber),
                     itemCount: 5,
