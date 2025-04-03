@@ -31,7 +31,7 @@ class Product {
       'category': category,
       'price': price,
       'id': id,
-      'ratings': rating,
+      'rating': rating,
     };
   }
 
@@ -44,15 +44,12 @@ class Product {
       category: map['category'] ?? '',
       price: map['price']?.toDouble() ?? 0.0,
       id: map['_id'],
-      // If the map contains a 'ratings' key, and the value is not null,
-      // then create a List<Rating> from the value, which is a List of Maps.
-      // For each Map in the List, create a Rating object from it using the
-      // Rating.fromMap factory, and add it to the List.
-      // If the 'ratings' key does not exist in the map, or if the value is null,
-      // then set the ratings parameter to null.
       rating: map['ratings'] != null
           ? List<Rating>.from(
-              map['ratings']?.map<Rating>((x) => Rating.fromMap(x)))
+              map['ratings']?.map(
+                (x) => Rating.fromMap(x),
+              ),
+            )
           : null,
     );
   }
