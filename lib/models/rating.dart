@@ -2,21 +2,21 @@
 import 'dart:convert';
 
 class Rating {
-  final double rate;
+  final double rating;
   final String userId;
 
-  Rating({required this.rate, required this.userId});
+  Rating({required this.rating, required this.userId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rate': rate,
+      'rate': rating,
       'userId': userId,
     };
   }
 
   factory Rating.fromMap(Map<String, dynamic> map) {
     return Rating(
-      rate: map['rate'] as double,
+      rating: map['rate'] as double,
       userId: map['userId'] as String,
     );
   }

@@ -10,7 +10,7 @@ class Product {
   final String category;
   final double price;
   final String? id;
-  final List<Rating>? ratings;
+  final List<Rating>? rating;
   Product({
     required this.name,
     required this.description,
@@ -19,7 +19,7 @@ class Product {
     required this.category,
     required this.price,
     this.id,
-    this.ratings,
+    this.rating,
   });
 
   Map<String, dynamic> toMap() {
@@ -31,7 +31,7 @@ class Product {
       'category': category,
       'price': price,
       'id': id,
-      'ratings': ratings,
+      'ratings': rating,
     };
   }
 
@@ -50,7 +50,7 @@ class Product {
       // Rating.fromMap factory, and add it to the List.
       // If the 'ratings' key does not exist in the map, or if the value is null,
       // then set the ratings parameter to null.
-      ratings: map['ratings'] != null
+      rating: map['ratings'] != null
           ? List<Rating>.from(
               map['ratings']?.map<Rating>((x) => Rating.fromMap(x)))
           : null,
