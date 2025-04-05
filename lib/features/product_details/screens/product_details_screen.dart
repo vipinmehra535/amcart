@@ -43,21 +43,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   void initState() {
     super.initState();
     double totalRating = 0;
-
-    // Check if the rating list is null before accessing it
-    if (widget.product.rating != null && widget.product.rating!.isNotEmpty) {
-      for (int i = 0; i < widget.product.rating!.length; i++) {
-        totalRating += widget.product.rating![i].rating;
-
-        if (widget.product.rating![i].userId ==
-            Provider.of<UserProvider>(context, listen: false).user.id) {
-          myRating = widget.product.rating![i].rating;
-        }
+    for (int i = 0; i < widget.product.rating!.length; i++) {
+      totalRating += widget.product.rating![i].rating;
+      if (widget.product.rating![i].userId ==
+          Provider.of<UserProvider>(context, listen: false).user.id) {
+        myRating = widget.product.rating![i].rating;
       }
+    }
 
+    if (totalRating != 0) {
       avgRating = totalRating / widget.product.rating!.length;
-    } else {
-      avgRating = 0; // Set a default value when no ratings exist
     }
   }
 
