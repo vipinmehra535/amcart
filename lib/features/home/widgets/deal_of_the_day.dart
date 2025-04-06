@@ -40,75 +40,69 @@ class _DealOfTheDayState extends State<DealOfTheDay> {
                   ),
                 ),
               )
-            : Column(
-                children: [
-                  Container(
-                    alignment: Alignment.topLeft,
-                    padding: const EdgeInsets.only(left: 15, top: 15),
-                    child: const Text(
-                      'Deal of the day',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
-                  Image.network(
-                    product!.images[0],
-                    width: double.infinity,
-                    height: 235,
-                    fit: BoxFit.fitHeight,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 15),
-                    alignment: Alignment.topLeft,
-                    child: const Text(
-                      '\$100',
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  Container(
-                    padding:
-                        const EdgeInsets.only(left: 15, top: 15, right: 40),
-                    alignment: Alignment.topLeft,
-                    child: const Text(
-                      'Viveka 100% cotton suit set',
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: product!.images
-                          .map(
-                            (e) => Image.network(
-                              e,
-                              height: 100,
-                              width: 100,
-                              fit: BoxFit.fitHeight,
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 15)
-                        .copyWith(left: 15),
-                    alignment: Alignment.topLeft,
-                    child: const Text(
-                      'See all deals',
-                      style: TextStyle(
-                        color: Colors.cyan,
+            : GestureDetector(
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  '/product-details',
+                  arguments: product,
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.topLeft,
+                      padding: const EdgeInsets.only(left: 15, top: 15),
+                      child: const Text(
+                        'Deal of the day',
+                        style: TextStyle(fontSize: 20),
                       ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
                     ),
-                  )
-                ],
+                    Image.network(
+                      product!.images[0],
+                      width: double.infinity,
+                      height: 235,
+                      fit: BoxFit.fitHeight,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(left: 15),
+                      alignment: Alignment.topLeft,
+                      child: const Text(
+                        '\$100',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    Container(
+                      padding:
+                          const EdgeInsets.only(left: 15, top: 15, right: 40),
+                      alignment: Alignment.topLeft,
+                      child: const Text(
+                        'Viveka 100% cotton suit set',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: product!.images
+                            .map(
+                              (e) => Image.network(
+                                e,
+                                height: 100,
+                                width: 100,
+                                fit: BoxFit.fitHeight,
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    ),
+                  ],
+                ),
               );
   }
 }
