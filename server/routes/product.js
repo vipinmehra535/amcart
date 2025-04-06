@@ -72,9 +72,6 @@ productRouter.get("/api/deal-of-day", auth, async (req, res) => {
     });
 
     console.log(products[0]);
-    if (products.length === 0) {
-      return res.status(404).json({ error: "No products found" });
-    }
     res.json(products[0]);
   } catch (e) {
     res.status(500).json({ error: e.message });

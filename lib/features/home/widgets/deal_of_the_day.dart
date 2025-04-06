@@ -30,8 +30,16 @@ class _DealOfTheDayState extends State<DealOfTheDay> {
   Widget build(BuildContext context) {
     return product == null
         ? const Loader()
-        : product!.name.isNotEmpty
-            ? const SizedBox()
+        : product!.name.isEmpty
+            ? const SizedBox(
+                height: 235,
+                child: Center(
+                  child: Text(
+                    'No deal of the day available',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              )
             : Column(
                 children: [
                   Container(
@@ -76,14 +84,11 @@ class _DealOfTheDayState extends State<DealOfTheDay> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: product!.images
                           .map(
-                            (e) => Container(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Image.network(
-                                e,
-                                height: 100,
-                                width: 100,
-                                fit: BoxFit.fitHeight,
-                              ),
+                            (e) => Image.network(
+                              e,
+                              height: 100,
+                              width: 100,
+                              fit: BoxFit.fitHeight,
                             ),
                           )
                           .toList(),
