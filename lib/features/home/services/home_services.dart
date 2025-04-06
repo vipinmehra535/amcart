@@ -50,7 +50,6 @@ class HomeServices {
 
   Future<Product> fetchDealOfTheDay({
     required BuildContext context,
-    required String category,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     Product product = Product(
