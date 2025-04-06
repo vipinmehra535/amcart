@@ -51,7 +51,8 @@ class _DealOfTheDayState extends State<DealOfTheDay> {
                     ),
                   ),
                   Image.network(
-                    'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+                    product!.images[0],
+                    width: double.infinity,
                     height: 235,
                     fit: BoxFit.fitHeight,
                   ),
