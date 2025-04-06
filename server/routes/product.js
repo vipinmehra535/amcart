@@ -53,6 +53,7 @@ productRouter.post("/api/rate-product", auth, async (req, res) => {
 });
 
 productRouter.get("/api/deal-of-day", auth, async (req, res) => {
+  console.log("Deal of the day called");
   try {
     let products = await Product.find({});
 
@@ -70,6 +71,10 @@ productRouter.get("/api/deal-of-day", auth, async (req, res) => {
       return aSum < bSum ? 1 : -1;
     });
 
+    console.log(products[0]);
+    if (products.length === 0) {
+      return res.status(404).json({ error: "No products found" });
+    }
     res.json(products[0]);
   } catch (e) {
     res.status(500).json({ error: e.message });
