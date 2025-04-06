@@ -6,15 +6,12 @@ final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
     GlobalKey<ScaffoldMessengerState>();
 
 void showSnackBar(BuildContext context, String text) {
-  scaffoldMessengerKey.currentState?.showSnackBar(
+  ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(text),
-      behavior: SnackBarBehavior.floating, // Optional: Floating style
-      duration: const Duration(seconds: 2), // Customize duration
     ),
   );
 }
-
 
 Future<List<File>> pickImages() async {
   List<File> images = [];
