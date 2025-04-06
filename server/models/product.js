@@ -41,4 +41,4 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model("product", productSchema);
 
-module.exports = Product;
+module.exports = { Product, productSchema }; // Export the model and schema for use in other files

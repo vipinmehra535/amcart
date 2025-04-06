@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Product, productSchema } = require("./product");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -28,6 +29,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "user",
   },
+  cart: [
+    {
+      product: productSchema, // Assuming productSchema is defined elsewhere
+    },
+  ],
 });
 
 const User = mongoose.model("User", userSchema); // Use singular form for model name
