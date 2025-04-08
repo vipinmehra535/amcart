@@ -32,6 +32,10 @@ const userSchema = new mongoose.Schema({
   cart: [
     {
       product: productSchema, // Assuming productSchema is defined elsewhere
+      quantity: {
+        type: Number,
+        required: true,
+      },
     },
   ],
 });
