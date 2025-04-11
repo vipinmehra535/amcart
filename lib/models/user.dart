@@ -9,6 +9,7 @@ class User {
   final String address;
   final String type;
   final String token;
+  final List<dynamic> cart;
 
   User({
     required this.email,
@@ -18,6 +19,7 @@ class User {
     required this.token,
     required this.id,
     required this.name,
+    required this.cart,
   });
 
   Map<String, dynamic> toMap() {
@@ -29,6 +31,7 @@ class User {
       'address': address,
       'type': type,
       'token': token,
+      'cart': cart,
     };
   }
 
@@ -41,6 +44,7 @@ class User {
       address: map['address'] as String,
       type: map['type'] as String,
       token: map['token'] as String,
+      cart: List<dynamic>.from(map['cart'] as List<dynamic>),
     );
   }
 
