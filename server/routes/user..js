@@ -54,7 +54,7 @@ userRouter.delete("/api/remove-from-cart/:id", auth, async (req, res) => {
     await user.save();
     res.status(200).json(user);
   } catch (error) {
-    console.error("Error adding to cart:", error);
+    console.error("Error removing to cart:", error);
     res.status(500).json({ error: error.message });
   }
 });
