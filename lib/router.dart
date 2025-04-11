@@ -1,4 +1,5 @@
 import 'package:amcart/common/widgets/bottom_bar.dart';
+import 'package:amcart/features/address/screens/adress_screen.dart';
 import 'package:amcart/features/admin/screens/add_product_screen.dart';
 import 'package:amcart/features/auth/screens/auth_screen.dart';
 import 'package:amcart/features/home/screens/categorey_deal_screen.dart';
@@ -58,6 +59,23 @@ Route<dynamic> genrateRoute(RouteSettings routeSettings) {
           product: product,
         ),
       );
+
+    case AddressScreen.routeName:
+      var totalAmount = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => AddressScreen(
+          totalAmount: totalAmount,
+        ),
+      );
+    // case OrderDetailScreen.routeName:
+    //   var order = routeSettings.arguments as Order;
+    //   return MaterialPageRoute(
+    //     settings: routeSettings,
+    //     builder: (_) => OrderDetailScreen(
+    //       order: order,
+    //     ),
+    //   );
 
     default:
       return MaterialPageRoute(
