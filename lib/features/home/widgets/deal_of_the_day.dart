@@ -4,27 +4,34 @@ import 'package:amcart/features/product_details/screens/product_details_screen.d
 import 'package:amcart/models/product.dart';
 import 'package:flutter/material.dart';
 
-class DealOfTheDay extends StatefulWidget {
-  const DealOfTheDay({super.key});
+class DealOfDay extends StatefulWidget {
+  const DealOfDay({Key? key}) : super(key: key);
 
   @override
-  State<DealOfTheDay> createState() => _DealOfTheDayState();
+  State<DealOfDay> createState() => _DealOfDayState();
 }
 
-class _DealOfTheDayState extends State<DealOfTheDay> {
-  final HomeServices homeServices = HomeServices();
+class _DealOfDayState extends State<DealOfDay> {
   Product? product;
+  final HomeServices homeServices = HomeServices();
 
   @override
   void initState() {
-    fetchDealOfTheDay();
     super.initState();
+    fetchDealOfDay();
   }
 
-  void fetchDealOfTheDay() async {
-    // Fetch the deal of the day from the server or local storage
-    // This is just a placeholder for the actual implementation
+  void fetchDealOfDay() async {
     product = await homeServices.fetchDealOfTheDay(context: context);
+    setState(() {});
+  }
+
+  void navigateToDetailScreen() {
+    Navigator.pushNamed(
+      context,
+      ProductDetailsScreen.routeName,
+      arguments: product,
+    );
   }
 
   @override
@@ -32,26 +39,14 @@ class _DealOfTheDayState extends State<DealOfTheDay> {
     return product == null
         ? const Loader()
         : product!.name.isEmpty
-            ? const SizedBox(
-                height: 235,
-                child: Center(
-                  child: Text(
-                    'No deal of the day available',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
-              )
+            ? const SizedBox()
             : GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                  context,
-                  ProductDetailsScreen.routeName,
-                  arguments: product,
-                ),
+                onTap: navigateToDetailScreen,
                 child: Column(
                   children: [
                     Container(
                       alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.only(left: 15, top: 15),
+                      padding: const EdgeInsets.only(left: 10, top: 15),
                       child: const Text(
                         'Deal of the day',
                         style: TextStyle(fontSize: 20),
@@ -59,7 +54,6 @@ class _DealOfTheDayState extends State<DealOfTheDay> {
                     ),
                     Image.network(
                       product!.images[0],
-                      width: double.infinity,
                       height: 235,
                       fit: BoxFit.fitHeight,
                     ),
@@ -68,23 +62,18 @@ class _DealOfTheDayState extends State<DealOfTheDay> {
                       alignment: Alignment.topLeft,
                       child: const Text(
                         '\$100',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(fontSize: 18),
                       ),
                     ),
                     Container(
-                      padding:
-                          const EdgeInsets.only(left: 15, top: 15, right: 40),
                       alignment: Alignment.topLeft,
-                      child: const Text(
-                        'Viveka 100% cotton suit set',
+                      padding:
+                          const EdgeInsets.only(left: 15, top: 5, right: 40),
+                      child: Text(
+                        product!.name,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 15,
                     ),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -94,12 +83,24 @@ class _DealOfTheDayState extends State<DealOfTheDay> {
                             .map(
                               (e) => Image.network(
                                 e,
-                                height: 100,
+                                fit: BoxFit.fitWidth,
                                 width: 100,
-                                fit: BoxFit.fitHeight,
+                                height: 100,
                               ),
                             )
                             .toList(),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                      ).copyWith(left: 15),
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'See all deals',
+                        style: TextStyle(
+                          color: Colors.cyan[800],
+                        ),
                       ),
                     ),
                   ],
