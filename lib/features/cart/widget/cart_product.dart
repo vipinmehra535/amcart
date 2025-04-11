@@ -1,3 +1,4 @@
+import 'package:amcart/features/cart/services/cart_services.dart';
 import 'package:amcart/features/product_details/services/product_details_services.dart';
 import 'package:amcart/models/product.dart';
 import 'package:amcart/providers/user_provider.dart';
@@ -18,7 +19,7 @@ class CartProduct extends StatefulWidget {
 class _CartProductState extends State<CartProduct> {
   final ProductDetailsServices productDetailsServices =
       ProductDetailsServices();
-  // final CartServices cartServices = CartServices();
+  final CartServices cartServices = CartServices();
 
   void increaseQuantity(Product product) {
     productDetailsServices.addToCart(
@@ -28,10 +29,10 @@ class _CartProductState extends State<CartProduct> {
   }
 
   void decreaseQuantity(Product product) {
-    // cartServices.removeFromCart(
-    //   context: context,
-    //   product: product,
-    // );
+    cartServices.removeFromCart(
+      context: context,
+      product: product,
+    );
   }
 
   @override
