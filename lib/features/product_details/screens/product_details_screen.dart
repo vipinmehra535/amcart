@@ -29,6 +29,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     searchController.clear();
   }
 
+  void addToCart() {
+    productDetailsServices.addToCart(
+      context: context,
+      product: widget.product,
+    );
+  }
+
   double avgRating = 0;
   double myRating = 0;
 
@@ -281,7 +288,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 Expanded(
                   child: CustomButton(
                     text: 'Add to Cart',
-                    onTap: () {},
+                    onTap: addToCart,
                     color: const Color.fromARGB(255, 70, 145, 160),
                   ),
                 ),
