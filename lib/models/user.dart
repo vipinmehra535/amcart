@@ -44,7 +44,11 @@ class User {
       address: map['address'] as String,
       type: map['type'] as String,
       token: map['token'] as String,
-      cart: List<dynamic>.from(map['cart'] as List<dynamic>),
+      cart: List<Map<String, dynamic>>.from(
+        map['cart']?.map(
+          (x) => Map<String, dynamic>.from(x),
+        ),
+      ),
     );
   }
 
