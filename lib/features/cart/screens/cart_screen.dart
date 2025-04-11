@@ -1,5 +1,6 @@
 import 'package:amcart/common/widgets/custom_button.dart';
 import 'package:amcart/constants/global_variables.dart';
+import 'package:amcart/features/address/screens/adress_screen.dart';
 import 'package:amcart/features/cart/widget/cart_product.dart';
 import 'package:amcart/features/cart/widget/cart_subtotal.dart';
 import 'package:amcart/features/home/widgets/address_box.dart';
@@ -21,11 +22,11 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   void navigateToAddress(int sum) {
-    // Navigator.pushNamed(
-    //   context,
-    //   AddressScreen.routeName,
-    //   arguments: sum.toString(),
-    // );
+    Navigator.pushNamed(
+      context,
+      AddressScreen.routeName,
+      arguments: sum.toString(),
+    );
   }
 
   @override
@@ -89,7 +90,7 @@ class _CartScreenState extends State<CartScreen> {
                             width: 1,
                           ),
                         ),
-                        hintText: 'Search Amazon.in',
+                        hintText: 'Search amCart.in',
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
