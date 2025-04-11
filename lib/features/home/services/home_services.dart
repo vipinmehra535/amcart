@@ -82,7 +82,6 @@ class HomeServices {
         showSnackBar(context, e.toString());
       }
     }
-    print(product.toJson());
     return product;
   }
 }

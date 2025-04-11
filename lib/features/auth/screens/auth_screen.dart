@@ -36,7 +36,6 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   void signUpUser() {
-    print('Account created! Login with the same credentials');
     authService.signUp(
       context: context,
       name: _nameController.text,
