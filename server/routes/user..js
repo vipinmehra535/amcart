@@ -15,7 +15,7 @@ userRouter.post("/api/add-to-cart", auth, async (req, res) => {
     } else {
       let isProductFound = false;
       for (let i = 0; i < user.cart.length; i++) {
-        if (user.cart[i].product._id.equal(product._id)) {
+        if (user.cart[i].product._id.equals(product._id)) {
           // Check if the product is already in the cart
           isProductFound = true;
         }
@@ -30,6 +30,7 @@ userRouter.post("/api/add-to-cart", auth, async (req, res) => {
     await user.save();
     res.status(200).json(user);
   } catch (error) {
+    console.error("Error adding to cart:", error);
     res.status(500).json({ error: error.message });
   }
 });

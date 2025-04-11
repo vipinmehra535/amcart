@@ -53,7 +53,6 @@ productRouter.post("/api/rate-product", auth, async (req, res) => {
 });
 
 productRouter.get("/api/deal-of-day", auth, async (req, res) => {
-  console.log("Deal of the day called");
   try {
     let products = await Product.find({});
 
