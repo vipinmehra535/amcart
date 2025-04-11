@@ -1,5 +1,6 @@
 import 'package:amcart/common/widgets/custom_button.dart';
 import 'package:amcart/constants/global_variables.dart';
+import 'package:amcart/features/cart/widget/cart_product.dart';
 import 'package:amcart/features/cart/widget/cart_subtotal.dart';
 import 'package:amcart/features/home/widgets/address_box.dart';
 import 'package:amcart/features/search/screens/search_screen.dart';
@@ -131,9 +132,9 @@ class _CartScreenState extends State<CartScreen> {
               itemCount: user.cart.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                // return CartProduct(
-                //   index: index,
-                // );
+                return CartProduct(
+                  index: index,
+                );
               },
             ),
           ],
