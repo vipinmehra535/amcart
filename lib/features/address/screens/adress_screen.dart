@@ -2,6 +2,9 @@ import 'package:amcart/constants/global_variables.dart';
 import 'package:amcart/constants/utlis.dart';
 import 'package:amcart/providers/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:amcart/common/widgets/custom_textfield.dart';
+import 'package:pay/pay.dart';
+
 import 'package:provider/provider.dart';
 
 class AddressScreen extends StatefulWidget {
@@ -24,19 +27,28 @@ class _AddressScreenState extends State<AddressScreen> {
   final _addressFormKey = GlobalKey<FormState>();
 
   String addressToBeUsed = "";
-  // List<PaymentItem> paymentItems = [];
+  List<PaymentItem> paymentItems = [];
+  PaymentConfiguration? _paymentConfiguration;
   // final AddressServices addressServices = AddressServices();
 
   @override
   void initState() {
     super.initState();
-    // paymentItems.add(
-    //   PaymentItem(
-    //     amount: widget.totalAmount,
-    //     label: 'Total Amount',
-    //     status: PaymentItemStatus.final_price,
-    //   ),
-    // );
+    loadPaymentConfiguration();
+    paymentItems.add(
+      PaymentItem(
+        amount: widget.totalAmount,
+        label: 'Total Amount',
+        status: PaymentItemStatus.final_price,
+      ),
+    );
+  }
+
+  void loadPaymentConfiguration() async {
+    final config = await PaymentConfiguration.fromAsset('applepay.json');
+    setState(() {
+      _paymentConfiguration = config;
+    });
   }
 
   @override
@@ -137,6 +149,7 @@ class _AddressScreenState extends State<AddressScreen> {
                           style: const TextStyle(
                             fontSize: 18,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
@@ -154,44 +167,44 @@ class _AddressScreenState extends State<AddressScreen> {
                 key: _addressFormKey,
                 child: Column(
                   children: [
-                    // CustomTextField(
-                    //   controller: flatBuildingController,
-                    //   hintText: 'Flat, House no, Building',
-                    // ),
+                    CustomTextField(
+                      controller: flatBuildingController,
+                      hintText: 'Flat, House no, Building',
+                    ),
                     const SizedBox(height: 10),
-                    // CustomTextField(
-                    //   controller: areaController,
-                    //   hintText: 'Area, Street',
-                    // ),
+                    CustomTextField(
+                      controller: areaController,
+                      hintText: 'Area, Street',
+                    ),
                     const SizedBox(height: 10),
-                    // CustomTextField(
-                    //   controller: pincodeController,
-                    //   hintText: 'Pincode',
-                    // ),
+                    CustomTextField(
+                      controller: pincodeController,
+                      hintText: 'Pincode',
+                    ),
                     const SizedBox(height: 10),
-                    // CustomTextField(
-                    //   controller: cityController,
-                    //   hintText: 'Town/City',
-                    // ),
+                    CustomTextField(
+                      controller: cityController,
+                      hintText: 'Town/City',
+                    ),
                     const SizedBox(height: 10),
                   ],
                 ),
               ),
-              // ApplePayButton(
-              //   width: double.infinity,
-              //   style: ApplePayButtonStyle.whiteOutline,
-              //   type: ApplePayButtonType.buy,
-              //   paymentConfigurationAsset: 'applepay.json',
-              //   onPaymentResult: onApplePayResult,
-              //   paymentItems: paymentItems,
-              //   margin: const EdgeInsets.only(top: 15),
-              //   height: 50,
-              //   onPressed: () => payPressed(address),
-              // ),
+              ApplePayButton(
+                width: double.infinity,
+                style: ApplePayButtonStyle.whiteOutline,
+                type: ApplePayButtonType.buy,
+                paymentConfiguration: _paymentConfiguration!,
+                onPaymentResult: onApplePayResult,
+                paymentItems: paymentItems,
+                margin: const EdgeInsets.only(top: 15),
+                height: 50,
+                // onPressed: () => payPressed(address),
+              ),
               const SizedBox(height: 10),
               // GooglePayButton(
               //   onPressed: () => payPressed(address),
-              //   paymentConfigurationAsset: 'gpay.json',
+              //   paymentConfiguration: 'gpay.json',
               //   onPaymentResult: onGooglePayResult,
               //   paymentItems: paymentItems,
               //   height: 50,
