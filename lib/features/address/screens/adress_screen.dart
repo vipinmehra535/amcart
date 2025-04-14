@@ -207,17 +207,17 @@ class _AddressScreenState extends State<AddressScreen> {
                 height: 10,
                 width: double.infinity,
               ),
-              ApplePayButton(
-                paymentConfiguration: defaultApplePayConfig,
-                paymentItems: paymentItems,
-                style: ApplePayButtonStyle.black,
-                type: ApplePayButtonType.buy,
-                margin: const EdgeInsets.only(top: 15.0),
-                onPaymentResult: onApplePayResult,
-                loadingIndicator: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
+              // ApplePayButton(
+              //   paymentConfiguration: defaultApplePayConfig,
+              //   paymentItems: paymentItems,
+              //   style: ApplePayButtonStyle.black,
+              //   type: ApplePayButtonType.buy,
+              //   margin: const EdgeInsets.only(top: 15.0),
+              //   onPaymentResult: onApplePayResult,
+              //   loadingIndicator: const Center(
+              //     child: CircularProgressIndicator(),
+              //   ),
+              // ),
               GooglePayButton(
                 width: double.infinity,
                 paymentConfiguration: defaultGooglePayConfig,
