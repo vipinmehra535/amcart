@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class SingleProduct extends StatelessWidget {
   final String image;
-
   const SingleProduct({
     Key? key,
     required this.image,
@@ -22,7 +21,6 @@ class SingleProduct extends StatelessWidget {
           color: Colors.white,
         ),
         child: Container(
-          height: 150,
           width: 180,
           padding: const EdgeInsets.all(10),
           child: Image.network(
