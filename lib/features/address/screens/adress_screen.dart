@@ -1,5 +1,6 @@
 import 'package:amcart/constants/global_variables.dart';
 import 'package:amcart/constants/utlis.dart';
+import 'package:amcart/features/address/services/address_services.dart';
 import 'package:amcart/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:amcart/common/widgets/custom_textfield.dart';
@@ -29,7 +30,7 @@ class _AddressScreenState extends State<AddressScreen> {
   String addressToBeUsed = "";
   List<PaymentItem> paymentItems = [];
   PaymentConfiguration? _paymentConfiguration;
-  // final AddressServices addressServices = AddressServices();
+  final AddressServices addressServices = AddressServices();
 
   @override
   void initState() {
@@ -65,14 +66,14 @@ class _AddressScreenState extends State<AddressScreen> {
         .user
         .address
         .isEmpty) {
-      // addressServices.saveUserAddress(
-      //     context: context, address: addressToBeUsed);
+      addressServices.saveUserAddress(
+          context: context, address: addressToBeUsed);
     }
-    // addressServices.placeOrder(
-    //   context: context,
-    //   address: addressToBeUsed,
-    //   totalSum: double.parse(widget.totalAmount),
-    // );
+    addressServices.placeOrder(
+      context: context,
+      address: addressToBeUsed,
+      totalSum: double.parse(widget.totalAmount),
+    );
   }
 
   void onGooglePayResult(res) {
@@ -80,14 +81,14 @@ class _AddressScreenState extends State<AddressScreen> {
         .user
         .address
         .isEmpty) {
-      // addressServices.saveUserAddress(
-      //     context: context, address: addressToBeUsed);
+      addressServices.saveUserAddress(
+          context: context, address: addressToBeUsed);
     }
-    // addressServices.placeOrder(
-    //   context: context,
-    //   address: addressToBeUsed,
-    //   totalSum: double.parse(widget.totalAmount),
-    // );
+    addressServices.placeOrder(
+      context: context,
+      address: addressToBeUsed,
+      totalSum: double.parse(widget.totalAmount),
+    );
   }
 
   void payPressed(String addressFromProvider) {
