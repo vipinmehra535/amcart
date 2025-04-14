@@ -1,6 +1,7 @@
 import 'package:amcart/common/widgets/loader.dart';
 import 'package:amcart/constants/global_variables.dart';
 import 'package:amcart/features/account/services/account_services.dart';
+import 'package:amcart/features/account/widgets/single_product.dart';
 import 'package:amcart/models/order.dart';
 import 'package:flutter/material.dart';
 
@@ -80,9 +81,9 @@ class _OrdersState extends State<Orders> {
                         //   arguments: orders![index],
                         // );
                       },
-                      // child: SingleProduct(
-                      //   image: orders![index].products[0].images[0],
-                      // ),
+                      child: SingleProduct(
+                        image: orders![index].products[0].images[0],
+                      ),
                     );
                   },
                 ),

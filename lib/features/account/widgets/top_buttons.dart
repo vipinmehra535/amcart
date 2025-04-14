@@ -1,14 +1,14 @@
 import 'package:amcart/features/account/widgets/account_button.dart';
 import 'package:flutter/material.dart';
 
-class TopBottoms extends StatefulWidget {
-  const TopBottoms({super.key});
+class TopButtons extends StatefulWidget {
+  const TopButtons({super.key});
 
   @override
-  State<TopBottoms> createState() => _TopBottomsState();
+  State<TopButtons> createState() => _TopButtonsState();
 }
 
-class _TopBottomsState extends State<TopBottoms> {
+class _TopButtonsState extends State<TopButtons> {
   @override
   Widget build(BuildContext context) {
     return Column(

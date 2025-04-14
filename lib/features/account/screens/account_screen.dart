@@ -1,4 +1,7 @@
 import 'package:amcart/constants/global_variables.dart';
+import 'package:amcart/features/account/widgets/below_app_bar.dart';
+import 'package:amcart/features/account/widgets/orders.dart';
+import 'package:amcart/features/account/widgets/top_buttons.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -45,13 +48,13 @@ class AccountScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: const [
-          // BelowAppBar(),
+      body: const Column(
+        children: [
+          BelowAppBar(),
           SizedBox(height: 10),
-          // TopButtons(),
+          TopButtons(),
           SizedBox(height: 20),
-          // Orders(),
+          Orders(),
         ],
       ),
     );
