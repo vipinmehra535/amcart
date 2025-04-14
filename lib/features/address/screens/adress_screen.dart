@@ -29,7 +29,7 @@ class _AddressScreenState extends State<AddressScreen> {
 
   String addressToBeUsed = "";
   List<PaymentItem> paymentItems = [];
-  PaymentConfiguration? _paymentConfiguration;
+  PaymentConfiguration? paymentConfiguration;
   final AddressServices addressServices = AddressServices();
 
   @override
@@ -48,7 +48,7 @@ class _AddressScreenState extends State<AddressScreen> {
   void loadPaymentConfiguration() async {
     final config = await PaymentConfiguration.fromAsset('applepay.json');
     setState(() {
-      _paymentConfiguration = config;
+      paymentConfiguration = config;
     });
   }
 
@@ -117,13 +117,13 @@ class _AddressScreenState extends State<AddressScreen> {
   Widget build(BuildContext context) {
     var address = context.watch<UserProvider>().user.address;
 
-    void onApplePayResult(paymentResult) {
-      // Send the resulting Apple Pay token to your server / PSP
-    }
+    // void onApplePayResult(paymentResult) {
+    //   // Send the resulting Apple Pay token to your server / PSP
+    // }
 
-    void onGooglePayResult(paymentResult) {
-      // Send the resulting Google Pay token to your server / PSP
-    }
+    // void onGooglePayResult(paymentResult) {
+    //   // Send the resulting Google Pay token to your server / PSP
+    // }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -199,7 +199,6 @@ class _AddressScreenState extends State<AddressScreen> {
                   ],
                 ),
               ),
-
               Container(
                 decoration: BoxDecoration(
                   color: Colors.black12,

@@ -17,6 +17,7 @@ class AddressServices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
+      print('address: $address');
       http.Response res = await http.post(
         Uri.parse('$uri/api/save-user-address'),
         headers: {
@@ -55,6 +56,7 @@ class AddressServices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
+      print('totalSum: $totalSum');
       http.Response res = await http.post(Uri.parse('$uri/api/order'),
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
