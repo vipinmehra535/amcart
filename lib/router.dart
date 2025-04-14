@@ -4,8 +4,10 @@ import 'package:amcart/features/admin/screens/add_product_screen.dart';
 import 'package:amcart/features/auth/screens/auth_screen.dart';
 import 'package:amcart/features/home/screens/categorey_deal_screen.dart';
 import 'package:amcart/features/home/screens/home_screen.dart';
+import 'package:amcart/features/order_details/screens/order_details.dart';
 import 'package:amcart/features/product_details/screens/product_details_screen.dart';
 import 'package:amcart/features/search/screens/search_screen.dart';
+import 'package:amcart/models/order.dart';
 import 'package:amcart/models/product.dart';
 import 'package:flutter/material.dart';
 
@@ -68,14 +70,14 @@ Route<dynamic> genrateRoute(RouteSettings routeSettings) {
           totalAmount: totalAmount,
         ),
       );
-    // case OrderDetailScreen.routeName:
-    //   var order = routeSettings.arguments as Order;
-    //   return MaterialPageRoute(
-    //     settings: routeSettings,
-    //     builder: (_) => OrderDetailScreen(
-    //       order: order,
-    //     ),
-    //   );
+    case OrderDetailScreen.routeName:
+      var order = routeSettings.arguments as Order;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => OrderDetailScreen(
+          order: order,
+        ),
+      );
 
     default:
       return MaterialPageRoute(
