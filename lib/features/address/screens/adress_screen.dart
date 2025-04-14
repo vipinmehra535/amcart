@@ -115,13 +115,6 @@ class _AddressScreenState extends State<AddressScreen> {
   @override
   Widget build(BuildContext context) {
     var address = context.watch<UserProvider>().user.address;
-    const _paymentItems = [
-      PaymentItem(
-        label: 'Total',
-        amount: '99.99',
-        status: PaymentItemStatus.final_price,
-      )
-    ];
 
     void onApplePayResult(paymentResult) {
       // Send the resulting Apple Pay token to your server / PSP
@@ -216,7 +209,7 @@ class _AddressScreenState extends State<AddressScreen> {
               ),
               ApplePayButton(
                 paymentConfiguration: defaultApplePayConfig,
-                paymentItems: _paymentItems,
+                paymentItems: paymentItems,
                 style: ApplePayButtonStyle.black,
                 type: ApplePayButtonType.buy,
                 margin: const EdgeInsets.only(top: 15.0),
@@ -228,7 +221,7 @@ class _AddressScreenState extends State<AddressScreen> {
               GooglePayButton(
                 width: double.infinity,
                 paymentConfiguration: defaultGooglePayConfig,
-                paymentItems: _paymentItems,
+                paymentItems: paymentItems,
                 type: GooglePayButtonType.buy,
                 margin: const EdgeInsets.only(top: 15.0),
                 onPaymentResult: onGooglePayResult,
