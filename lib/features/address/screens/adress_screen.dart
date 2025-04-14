@@ -232,6 +232,7 @@ class _AddressScreenState extends State<AddressScreen> {
                 type: GooglePayButtonType.buy,
                 margin: const EdgeInsets.only(top: 15.0),
                 onPaymentResult: onGooglePayResult,
+                onPressed: () => payPressed(address),
                 loadingIndicator: const Center(
                   child: CircularProgressIndicator(),
                 ),
