@@ -37,7 +37,12 @@ class _DealOfDayState extends State<DealOfDay> {
   @override
   Widget build(BuildContext context) {
     return product == null
-        ? const Loader()
+        ?   Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+               Loader(),
+            ],
+          )
         : product!.name.isEmpty
             ? const SizedBox()
             : GestureDetector(
