@@ -37,10 +37,10 @@ class _DealOfDayState extends State<DealOfDay> {
   @override
   Widget build(BuildContext context) {
     return product == null
-        ?   Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        ? const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-               Loader(),
+              Loader(),
             ],
           )
         : product!.name.isEmpty
