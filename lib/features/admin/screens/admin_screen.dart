@@ -1,4 +1,5 @@
 import 'package:amcart/constants/global_variables.dart';
+import 'package:amcart/features/admin/screens/analytics_screen.dart';
 import 'package:amcart/features/admin/screens/order_screen.dart';
 import 'package:amcart/features/admin/screens/posts_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _AdminScreenState extends State<AdminScreen> {
 
   List<Widget> pages = [
     const PostsScreen(),
-    const Center(child: Text("Home Screen")),
+    const AnalyticsScreen(),
     const OrderScreen(),
   ];
   void updatepage(value) {
